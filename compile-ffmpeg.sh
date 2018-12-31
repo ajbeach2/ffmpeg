@@ -12,6 +12,11 @@ PATH="$HOME/bin:$PATH" PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./conf
   --disable-ffplay \
   --disable-ffprobe \
   --disable-ffserver \
+  --enable-protocol="https" \
+  --enable-protocol="http" \
+  --enable-protocol="file" \
+  --enable-protocol="pipe" \
+  --enable-protocol="tls_openssl" \
   --enable-gpl \
   --enable-nonfree \
   --enable-version3 \

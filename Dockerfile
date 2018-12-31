@@ -2,11 +2,13 @@ FROM alpine:3.8
 RUN mkdir /root/scripts
 ENV FFMPEGVERSION 3.2
 
-RUN apk --no-cache add \
+RUN apk update && apk --no-cache add \
     build-base wget \
     pkgconf \
     libpthread-stubs \
     git \
+    openssl \
+    openssl-dev \
     pkgconfig \
     autoconf \
     automake \
@@ -32,6 +34,7 @@ ca-certificates \
 libass-dev \
 libtheora-dev \
 libtool \
+openssl \
 libvorbis-dev \
 zlib-dev \
 x264-dev && \
