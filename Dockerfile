@@ -1,6 +1,5 @@
-FROM golang:1.12-alpine
+FROM golang:1.12.6-alpine3.10
 RUN mkdir /root/scripts
-ENV FFMPEGVERSION 4.1.3
 
 RUN apk update && apk --no-cache add \
     build-base wget \
@@ -24,10 +23,11 @@ RUN apk update && apk --no-cache add \
 ADD compile-lib-aac.sh /root/scripts
 RUN ~/scripts/compile-lib-aac.sh
 
+ARG FFMPEGVERSION
 ADD compile-ffmpeg.sh /root/scripts/
 RUN ~/scripts/compile-ffmpeg.sh
 
-FROM golang:1.12-alpine
+FROM golang:1.12.6-alpine3.10
 COPY --from=0 /root/bin /root/bin
 RUN apk add --update \
 ca-certificates \
