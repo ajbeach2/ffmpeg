@@ -1,7 +1,10 @@
-cd ~/ffmpeg_sources
-wget http://ffmpeg.org/releases/ffmpeg-$FFMPEGVERSION.tar.bz2
-tar xjvf ffmpeg-$FFMPEGVERSION.tar.bz2
-cd ffmpeg-$FFMPEGVERSION
+if [ -d "ffmpeg-$FFMPEGVERSION" ] 
+then
+    cd ffmpeg-$FFMPEGVERSION
+else
+    cd ffmpeg
+fi
+
 PATH="$HOME/bin:$PATH" PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./configure \
   --prefix="$HOME/ffmpeg_build" \
   --pkg-config-flags="--static" \

@@ -24,6 +24,11 @@ ADD compile-lib-aac.sh /root/scripts
 RUN ~/scripts/compile-lib-aac.sh
 
 ARG FFMPEGVERSION
+
+WORKDIR ~/ffmpeg_sources
+RUN wget http://ffmpeg.org/releases/ffmpeg-$FFMPEGVERSION.tar.bz2
+RUN tar xjvf ffmpeg-$FFMPEGVERSION.tar.bz2
+
 ADD compile-ffmpeg.sh /root/scripts/
 RUN ~/scripts/compile-ffmpeg.sh
 
