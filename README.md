@@ -1,4 +1,4 @@
-# FFMPEG Alpine 3.10
+# FFMPEG Go 1.12, Alpine 3.10
 
 ## Building
 
