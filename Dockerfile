@@ -1,4 +1,4 @@
-FROM golang:1.12.6-alpine3.10
+FROM golang:1.13.1-alpine3.10
 RUN mkdir /root/scripts
 
 RUN apk update && apk --no-cache add \
@@ -32,7 +32,7 @@ RUN tar xjvf ffmpeg-$FFMPEGVERSION.tar.bz2
 ADD compile-ffmpeg.sh /root/scripts/
 RUN ~/scripts/compile-ffmpeg.sh
 
-FROM golang:1.12.6-alpine3.10
+FROM golang:1.13.1-alpine3.10
 COPY --from=0 /root/bin /root/bin
 RUN apk add --update \
 ca-certificates \

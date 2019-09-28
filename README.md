@@ -1,4 +1,4 @@
-# FFMPEG Go 1.12, Alpine 3.10, FFMPEG
+# FFMPEG Go 1.13, Alpine 3.10, FFMPEG
 
 [![Release](https://img.shields.io/github/release/ajbeach2/ffmpeg.svg)](https://github.com/ajbeach2/ffmpeg/releases)
 
