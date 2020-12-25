@@ -1,11 +1,12 @@
-VERSION=4.3
+VERSION=go1.15.6-ffmpeg4.3.1
+FFMPEG_VERSION=4.3.1
 
 build:
-	docker build --build-arg FFMPEGVERSION=$(ffmpeg) -t ajbeach2/ffmpeg:$(ffmpeg) . && \
-	docker push ajbeach2/ffmpeg:$(ffmpeg)
+	docker build --build-arg FFMPEGVERSION=$(FFMPEG_VERSION) -t ajbeach2/ffmpeg:$(VERSION) .  && \
+	docker push ajbeach2/ffmpeg:$(VERSION)
 
 http:
-	docker run -it -v "$(shell pwd):/code" ajbeach2/ffmpeg:$(tag) \
+	docker run -it -v "$(shell pwd):/code" ajbeach2/ffmpeg:$(VERSION) \
 		ffmpeg -v 9 -loglevel 99 -i "https://mp3d.jamendo.com/?trackid=1297521&format=mp32&from=app-97dab294" \
 			-filter_complex \
 				"[0:a]aformat=channel_layouts=mono,compand=gain=-6, \
@@ -13,9 +14,3 @@ http:
 				color=black:600x120[c]; \
 				[c][a]alphamerge" -vframes 1 /code/song.png \
 			-map 0:a -map -0:v -c:a libfdk_aac -b:a 256k -single_file 1 -f dash /code/song.mpd
-all:
-	for ffmpeg in "snapshot-git" "4.3"; do \
-		docker build --build-arg FFMPEGVERSION=$$ffmpeg -t ajbeach2/ffmpeg:$$ffmpeg . ; \
-		docker push ajbeach2/ffmpeg:$$ffmpeg; \
-	done
-
