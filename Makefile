@@ -2,11 +2,11 @@ VERSION=go1.15.6-ffmpeg4.3.1
 FFMPEG_VERSION=4.3.1
 
 build:
-	docker build --build-arg FFMPEGVERSION=$(FFMPEG_VERSION) -t ajbeach2/ffmpeg:$(VERSION) .  && \
-	docker push ajbeach2/ffmpeg:$(VERSION)
+	docker build --build-arg FFMPEGVERSION=$(FFMPEG_VERSION) -t $(repo)/ffmpeg:$(VERSION) .  && \
+	docker push $(repo)/ffmpeg:$(VERSION)
 
 http:
-	docker run -it -v "$(shell pwd):/code" ajbeach2/ffmpeg:$(VERSION) \
+	docker run -it -v "$(shell pwd):/code" $(repo)/ffmpeg:$(VERSION) \
 		ffmpeg -v 9 -loglevel 99 -i "https://mp3d.jamendo.com/?trackid=1297521&format=mp32&from=app-97dab294" \
 			-filter_complex \
 				"[0:a]aformat=channel_layouts=mono,compand=gain=-6, \
