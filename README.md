@@ -1,4 +1,4 @@
-# FFMPEG Go 1.13, Alpine 3.10, FFMPEG
+# FFMPEG Go 1.19, Alpine 3.16, FFMPEG
 
 [![Release](https://img.shields.io/github/release/ajbeach2/ffmpeg.svg)](https://github.com/ajbeach2/ffmpeg/releases)
 
@@ -19,5 +19,5 @@ make all
 The following command will run a sample command against a docker tag of this repo.
 
 ```
-make tag=0.1.0 http
+make tag=5.1.2 http
 ```
